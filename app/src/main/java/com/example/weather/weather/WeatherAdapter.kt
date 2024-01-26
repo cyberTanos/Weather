@@ -15,6 +15,8 @@ class WeatherAdapter() : ListAdapter<Weather, WeatherVH>(Differ) {
         fun bind(weather: Weather) {
             binding.nameCityView.text = weather.city
             binding.tempCityView.text = weather.temp
+            binding.weatherImage.setImageDrawable(binding.root.context.getDrawable(weather.image))
+            binding.dataView.text = weather.time
         }
     }
 
@@ -31,7 +33,7 @@ class WeatherAdapter() : ListAdapter<Weather, WeatherVH>(Differ) {
 
     object Differ : DiffUtil.ItemCallback<Weather>() {
         override fun areItemsTheSame(oldItem: Weather, newItem: Weather): Boolean {
-            return oldItem == newItem
+            return oldItem.city == newItem.city
         }
 
         override fun areContentsTheSame(oldItem: Weather, newItem: Weather): Boolean {
