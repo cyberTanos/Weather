@@ -1,4 +1,4 @@
-package com.example.weather.weather
+package com.example.weather.weather.main
 
 import com.example.weather.model.presentation.Weather
 
@@ -8,6 +8,10 @@ interface WeatherAction {
 
     data class SearchCity(
         val city: String
+    ) : WeatherAction
+
+    data class OnClickItem(
+        val weather: Weather
     ) : WeatherAction
 }
 
@@ -24,4 +28,10 @@ interface WeatherState {
     data class Error(
         val errorMessage: String
     ) : WeatherState
+}
+
+interface WeatherEffect {
+    data class ToNavigationContent(
+        val weather: Weather
+    ) : WeatherEffect
 }
