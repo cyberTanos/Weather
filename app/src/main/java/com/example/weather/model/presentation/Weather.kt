@@ -9,5 +9,9 @@ data class Weather(
     val city: String,
     val temp: String,
     @DrawableRes val image: Int,
-    val time: String
+    val time: String,
+    val description: String,
+    val humidity: String,
+    val windSpeed: String,
+    val pressure: String
 ) : Parcelable
