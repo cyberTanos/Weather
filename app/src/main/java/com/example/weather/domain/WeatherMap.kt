@@ -14,7 +14,11 @@ object WeatherMap {
             city = mapCity(response.resolvedAddress),
             temp = mapTemp(response.currentConditions.temp),
             image = response.currentConditions.icon,
-            time = getTime()
+            time = getTime(),
+            description = response.description,
+            humidity = mapHumidity(response.currentConditions.humidity),
+            windSpeed = mapWind(response.currentConditions.windspeed),
+            pressure = mapPressure(response.currentConditions.pressure)
         )
     }
 
@@ -23,7 +27,11 @@ object WeatherMap {
             city = entity.city,
             temp = entity.temp,
             image = getImage(entity.image),
-            time = entity.time
+            time = entity.time,
+            description = entity.description,
+            humidity = entity.humidity,
+            windSpeed = entity.windSpeed,
+            pressure = entity.pressure
         )
     }
 
@@ -32,7 +40,15 @@ object WeatherMap {
     }
 
     private fun mapTemp(temp: Double): String {
-        return temp.toInt().toString() + "°C"
+        return temp.toInt().toString() + "°"
+    }
+
+    private fun mapWind(windspeed: Double): String {
+        return windspeed.toInt().toString() + "м/с"
+    }
+
+    private fun mapPressure(pressure: Int): String {
+        return pressure.toString() + "мм рт.ст."
     }
 
     private fun getImage(icon: String): Int {
@@ -59,5 +75,9 @@ object WeatherMap {
         val sdf = SimpleDateFormat("dd/MM/yy hh:mm:ss")
         val currentDate = sdf.format(Date())
         return currentDate
+    }
+
+    private fun mapHumidity(humidity: Double): String {
+        return humidity.toInt().toString() + "%"
     }
 }

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.example.weather.R
 import com.example.weather.databinding.FragmentContentBinding
 import com.example.weather.model.presentation.Weather
@@ -26,7 +25,12 @@ class ContentFragment : Fragment(R.layout.fragment_content) {
 
         val args = arguments?.getParcelable<Weather>(KEY)!!
         binding.cityTitle.text = args.city
+        binding.tempView.text = args.temp
         binding.weatherImage.setImageResource(args.image)
+        binding.description.text = args.description
+        binding.humidityView.text = args.humidity
+        binding.windSpeedView.text = args.windSpeed
+        binding.pressureView.text = args.pressure
 
         return binding.root
     }

@@ -38,22 +38,70 @@
 
     <ImageView
         android:id="@+id/weatherImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="6dp"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toEndOf="@id/cityTitle"
+        app:layout_constraintTop_toTopOf="@id/toolbar"
         tools:background="@color/black" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/tempView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:textSize="16dp"
+        android:textSize="100dp"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:text="20" />
+
+    <TextView
+        android:id="@+id/humidityView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/weatherImage"
-        tools:text="Погода погода погода" />
+        app:layout_constraintTop_toBottomOf="@id/tempView"
+        tools:text="10%" />
+
+    <TextView
+        android:id="@+id/windSpeedView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@id/humidityView"
+        app:layout_constraintTop_toBottomOf="@id/tempView"
+        tools:text="20м/с" />
+
+    <TextView
+        android:id="@+id/pressureView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@id/windSpeedView"
+        app:layout_constraintTop_toBottomOf="@id/tempView"
+        tools:text="300мм рт.ст." />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="#FBFBFB"
+        android:elevation="40dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintTop_toBottomOf="@id/humidityView">
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="18dp"
+            tools:text="Погода" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
